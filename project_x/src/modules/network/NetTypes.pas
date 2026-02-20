@@ -5,9 +5,9 @@ unit NetTypes;
 
 interface
 
-	uses 
+	uses
 		Classes, SysUtils, Sockets; (*Unidades do fpc pra operações...*)
-	
+
 	type
 		(*Type para ser um socket handle<arquivo/socket>*)
 		tsocket_handle = Tsocket;
@@ -30,17 +30,43 @@ interface
 
 		(*Procedimento(delegate) para eventos de novas conexoes*)
 		(*Vai ser utilizado pelo server para notificar o q chega*)
-		Clientconnectevent = procedure(
-		SocketHandle: SocketHandle; 
+		Connectevent =procedure(SocketHandle: tsocket_handle; CEndpoint: Endpoint) of object;
+
+
+		DataReceived = procedure(
+		SocketHandle: SocketHandle;
 			const
 			       Buffer: Byte;
 			       Bytesreceived: Integer
 			       ) of object;
 
 
-
-		(*Delegate pra desconexao e vai ser usado pelo handler e server*)	       
+		(*Delegate pra desconexao e vai ser usado pelo handler e server*)
 		Disconnectevent = procedure(SocketHandle: SocketHandle) of object;
-			       	       
 
 
+	  (*Except para pegar erros*)
+		Networkerror = class(Exception)
+		  public
+				constructor Create(const Msg:string); overload;
+				constructor CreateFMT(
+				const Msg: string;
+				const Args: array of const;
+				); overload;
+		end;
+
+	implementation
+	  { Networkerror }
+			constructor Networkerror.Create(const Msg:string);
+			begin
+			  inherited Create(Msg);
+			end;
+
+			constructor Networkerror.CreateFMT(Msg: string;
+			const Args: array of const
+			);
+			begin
+			  inherited CreateFMT(Msg,Args)
+			end;
+
+			end.
