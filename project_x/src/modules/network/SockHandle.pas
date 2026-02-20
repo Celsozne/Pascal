@@ -155,7 +155,7 @@ constructor tsocket_handle.Create(ASocketHandle: tsocket_handle; AClientEndpoint
           raise ENetworkError.Create('Cannot send data: socket is not connected.');
 
         try
-          BytesSent := Sockets.Send(FSocketHandle, ABuffer[0], Length(ABuffer), 0);
+          BytesSent := Sockets.Send(FSocketHandle, Buffer[0], Length(Buffer), 0);
           if BytesSent < 0 then
             raise ENetworkError.CreateFmt('Error sending data: %d', [Sockets.GetLastError]);
           Result := BytesSent;
