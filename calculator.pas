@@ -2,7 +2,7 @@ program Calculadora;
 uses Math;
 
 var
-  a, b: Integer;
+  a, b: Int64;
   c_int: Int64;
   c_real: Double;
   option: Integer;
@@ -53,7 +53,7 @@ begin
            else
              begin
                c_int := a / b;
-               writeln('O valor da divisao e: ', c_real:0:2);
+               writeln('O valor da divisao e: ', c_real);
              end;
          end;
 
