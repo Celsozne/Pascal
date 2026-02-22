@@ -6,7 +6,7 @@ interface
 
 uses SysUtils, Generic.Collections, RtspConstants;
 
-type
+ttypt
 	THeaderMap = specialize TDictionary<String,String>;
 	TRtspRequest = record
 		Method, URI, Version, SessionID: String;
