@@ -6,7 +6,7 @@ type
 	TAudioManager = class
 public
 function AttachContext(var ACtx: TFFmpegContex): Boolean;
-funciot NextAudioFrame(out AFrame: TMediaFrame): TBridgeResult;
+function NextAudioFrame(out AFrame: TMediaFrame): TBridgeResult;
 		end;
 end.
 

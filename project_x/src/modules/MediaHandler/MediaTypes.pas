@@ -13,6 +13,6 @@ function CodecInfo(ACodec: TCodecType): TCodecInfo;
 
 function PayloadType(ACodec: TCodecType): Byte;
 
-function ClockRate(ACodec: TCodecType): Cardinal;
+function' ClockRate(ACodec: TCodecType): Cardinal;
 
 end. 
